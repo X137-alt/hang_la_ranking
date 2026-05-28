@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>控制自动化考研院校难度精细排名</title>
+  <meta name="description" content="控制科学与工程、控制工程、自动化方向考研院校 Logo 拖拽精细排名工具。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero-panel">
+      <section class="hero-copy">
+        <p class="eyebrow">控制自动化考研院校 Logo 拖拽锐评工具</p>
+        <h1>控制自动化考研院校难度精细排名</h1>
+        <p class="subtitle">拖动学校 Logo 到横向坐标轴任意位置，越靠左难度越高，越靠右相对友好。刷新后自动保留当前结果。</p>
+      </section>
+      <nav class="toolbar" aria-label="排名工具栏">
+        <button id="resetBtn" type="button">重置排名</button>
+        <button id="arrangeBtn" type="button">自动整理</button>
+        <button id="exportBtn" type="button">导出排名</button>
+        <button id="liveBtn" type="button">直播模式</button>
+        <button id="fullscreenBtn" type="button" class="primary">全屏展示</button>
+      </nav>
+    </header>
+
+    <section class="board-panel" aria-label="控制自动化考研院校难度排名面板">
+      <div class="board-head">
+        <div>
+          <p class="eyebrow">LIVE PRECISION BOARD</p>
+          <h2>控制自动化考研院校难度精细排名</h2>
+        </div>
+        <div class="status-pill" id="saveStatus" role="status" aria-live="polite">自动保存已开启</div>
+      </div>
+
+      <div class="level-axis" id="axisLabels" aria-hidden="true"></div>
+
+      <section class="rank-surface" id="rankSurface" aria-label="排名区域，可把 Logo 拖到此处">
+        <span class="surface-cue left">难度高</span>
+        <span class="surface-cue right">越靠右越拉</span>
+      </section>
+
+      <section class="pool-zone" aria-label="待评价区">
+        <aside class="pool-title">
+          <strong>待评价区</strong>
+          <span>未上榜学校先放这里</span>
+        </aside>
+        <div class="pool-list" id="poolList"></div>
+      </section>
+    </section>
+
+  </main>
+
+  <dialog class="export-dialog" id="exportDialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-head">
+        <h3>当前排名</h3>
+        <button type="submit" aria-label="关闭导出窗口">×</button>
+      </div>
+      <textarea id="exportText" readonly></textarea>
+      <div class="dialog-actions">
+        <button id="copyExportBtn" type="button">复制结果</button>
+        <button type="submit">关闭</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
