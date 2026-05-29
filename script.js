@@ -8,13 +8,13 @@
 */
 
 const levels = [
-  // 从“夯”到“拉完了”按难度递减，颜色也从更强烈逐步变轻。
-  { id: "hard", name: "夯", note: "顶级难度", color: "#ef4444", surfaceAlpha: 0.46 },
-  { id: "top", name: "顶级", note: "强校强方向", color: "#f97316", surfaceAlpha: 0.40 },
-  { id: "strong", name: "人上人", note: "竞争激烈", color: "#facc15", surfaceAlpha: 0.34 },
-  { id: "value", name: "性价比", note: "值得冲刺", color: "#4ade80", surfaceAlpha: 0.28 },
-  { id: "npc", name: "NPC", note: "正常难度", color: "#60a5fa", surfaceAlpha: 0.24 },
-  { id: "low", name: "拉完了", note: "相对友好", color: "#e5e7eb", surfaceAlpha: 0.22 },
+  // 从“夯”到“拉完了”按难度递减：标题栏保持强识别色，内容区降低透明度，优先突出院校 Logo 卡片。
+  { id: "hard", name: "夯", note: "顶级难度", color: "#dc2626", surfaceAlpha: 0.28 },
+  { id: "top", name: "顶级", note: "强校强方向", color: "#ea580c", surfaceAlpha: 0.23 },
+  { id: "strong", name: "人上人", note: "竞争激烈", color: "#facc15", surfaceAlpha: 0.20 },
+  { id: "value", name: "性价比", note: "值得冲刺", color: "#22c55e", surfaceAlpha: 0.17 },
+  { id: "npc", name: "NPC", note: "正常难度", color: "#3b82f6", surfaceAlpha: 0.16 },
+  { id: "low", name: "拉完了", note: "相对友好", color: "#cbd5e1", surfaceAlpha: 0.15 },
 ];
 
 const schools = [
@@ -28,7 +28,7 @@ const schools = [
   { id: "nudt", shortName: "国防科大", fullName: "国防科技大学", city: "长沙", tags: ["985", "军工强校", "门槛特殊"], difficulty: 93, logoNames: ["国防科大", "国防科技大学"] },
   { id: "seu", shortName: "东南", fullName: "东南大学", city: "南京", tags: ["985", "自动化强", "南京高热"], difficulty: 93 },
   { id: "bit", shortName: "北理", fullName: "北京理工大学", city: "北京", tags: ["985", "兵工强校", "区位热"], difficulty: 92 },
-  { id: "scut", shortName: "华工", fullName: "华南理工大学", city: "广州", tags: ["985", "工科强", "华南热"], difficulty: 91 },
+  { id: "scut", shortName: "华南理工", fullName: "华南理工大学", city: "广州", tags: ["985", "工科强", "华南热"], difficulty: 91 },
   { id: "tju", shortName: "天大", fullName: "天津大学", city: "天津", tags: ["985", "工科强", "热度高"], difficulty: 91 },
   { id: "whu", shortName: "武大", fullName: "武汉大学", city: "武汉", tags: ["985", "综合强", "名校光环"], difficulty: 90 },
   { id: "sdu", shortName: "山大", fullName: "山东大学", city: "济南", tags: ["985", "综合强", "规模大"], difficulty: 89 },
@@ -39,17 +39,17 @@ const schools = [
   { id: "bupt", shortName: "北邮", fullName: "北京邮电大学", city: "北京", tags: ["211", "信息强校", "跨考热"], difficulty: 87, logoNames: ["北邮", "北京邮电大学"] },
   { id: "nuaa", shortName: "南航", fullName: "南京航空航天大学", city: "南京", tags: ["211", "航空航天", "自动化强"], difficulty: 86 },
   { id: "cqu", shortName: "重大", fullName: "重庆大学", city: "重庆", tags: ["985", "工科强", "西南热"], difficulty: 86 },
-  { id: "uestc", shortName: "电科大", fullName: "电子科技大学", city: "成都", tags: ["985", "电子强校", "热度高"], difficulty: 86 },
+  { id: "uestc", shortName: "成电", fullName: "电子科技大学", city: "成都", tags: ["985", "电子强校", "热度高"], difficulty: 86 },
   { id: "jlu", shortName: "吉大", fullName: "吉林大学", city: "长春", tags: ["985", "综合强", "地域缓冲"], difficulty: 85 },
   { id: "nwpu", shortName: "西工大", fullName: "西北工业大学", city: "西安", tags: ["985", "三航强校", "工科强"], difficulty: 85 },
   { id: "dlut", shortName: "大工", fullName: "大连理工大学", city: "大连", tags: ["985", "工科强", "东北名校"], difficulty: 84 },
   { id: "hnu", shortName: "湖大", fullName: "湖南大学", city: "长沙", tags: ["985", "综合强", "城市热"], difficulty: 84 },
   { id: "xmu", shortName: "厦大", fullName: "厦门大学", city: "厦门", tags: ["985", "名校", "城市吸引"], difficulty: 83 },
   { id: "sysu", shortName: "中山", fullName: "中山大学", city: "广州/深圳", tags: ["985", "华南名校", "热度高"], difficulty: 83 },
-  { id: "swjtu", shortName: "西南交", fullName: "西南交通大学", city: "成都", tags: ["211", "交通强校", "方向稳定"], difficulty: 82 },
+  { id: "swjtu", shortName: "西南交通", fullName: "西南交通大学", city: "成都", tags: ["211", "交通强校", "方向稳定"], difficulty: 82 },
   { id: "bjtu", shortName: "北交", fullName: "北京交通大学", city: "北京", tags: ["211", "交通强校", "北京热"], difficulty: 82 },
   { id: "hhu", shortName: "河海", fullName: "河海大学", city: "南京", tags: ["211", "工科特色", "南京"], difficulty: 81 },
-  { id: "hebut", shortName: "河工", fullName: "河北工业大学", city: "天津", tags: ["211", "区位较好", "工科"], difficulty: 80 },
+  { id: "hebut", shortName: "河工大", fullName: "河北工业大学", city: "天津", tags: ["211", "区位较好", "工科"], difficulty: 80 },
   { id: "ustb", shortName: "北科", fullName: "北京科技大学", city: "北京", tags: ["211", "北京", "工科强"], difficulty: 80, logoNames: ["北京科技大学"] },
   { id: "nankai", shortName: "南开", fullName: "南开大学", city: "天津", tags: ["985", "名校", "工科体量较小"], difficulty: 79 },
   { id: "suda", shortName: "苏大", fullName: "苏州大学", city: "苏州", tags: ["211", "城市热", "综合强"], difficulty: 79 },
@@ -62,10 +62,10 @@ const schools = [
   { id: "whut", shortName: "武理", fullName: "武汉理工大学", city: "武汉", tags: ["211", "工科强", "规模大"], difficulty: 75, logoNames: ["武理", "武汉理工大学"] },
   { id: "ecust", shortName: "华理", fullName: "华东理工大学", city: "上海", tags: ["211", "上海", "工科强"], difficulty: 74 },
   { id: "csu", shortName: "中南", fullName: "中南大学", city: "长沙", tags: ["985", "综合强", "方向差异"], difficulty: 74 },
-  { id: "cpu_bj", shortName: "中石大北", fullName: "中国石油大学(北京)", city: "北京", tags: ["211", "能源特色", "北京"], difficulty: 73, logoNames: ["中国石油大学(北京)", "中国石油大学（北京）"] },
-  { id: "cpu_hd", shortName: "中石大华", fullName: "中国石油大学(华东)", city: "青岛", tags: ["211", "能源特色", "青岛"], difficulty: 72, logoNames: ["中国石油大学(华东)", "中国石油大学（华东）"] },
+  { id: "cpu_bj", shortName: "中石油(北京)", fullName: "中国石油大学(北京)", city: "北京", tags: ["211", "能源特色", "北京"], difficulty: 73, logoNames: ["中国石油大学(北京)", "中国石油大学（北京）"] },
+  { id: "cpu_hd", shortName: "中石油(华东)", fullName: "中国石油大学(华东)", city: "青岛", tags: ["211", "能源特色", "青岛"], difficulty: 72, logoNames: ["中国石油大学(华东)", "中国石油大学（华东）"] },
   { id: "cuge", shortName: "地大", fullName: "中国地质大学", city: "武汉/北京", tags: ["211", "行业特色", "方向差异"], difficulty: 72, logoNames: ["中国地质大学"] },
-  { id: "ouc", shortName: "海大", fullName: "中国海洋大学", city: "青岛", tags: ["985", "海洋特色", "方向差异"], difficulty: 72 },
+  { id: "ouc", shortName: "中海洋", fullName: "中国海洋大学", city: "青岛", tags: ["985", "海洋特色", "方向差异"], difficulty: 72 },
   { id: "njfu", shortName: "南林", fullName: "南京林业大学", city: "南京", tags: ["双一流", "南京", "工科方向"], difficulty: 71 },
   { id: "zzu", shortName: "郑大", fullName: "郑州大学", city: "郑州", tags: ["211", "体量大", "省内热"], difficulty: 71 },
   { id: "ahnu", shortName: "安大", fullName: "安徽大学", city: "合肥", tags: ["211", "合肥", "区域热"], difficulty: 70, logoNames: ["安大", "安徽大学"] },
@@ -77,24 +77,24 @@ const schools = [
   { id: "njnu", shortName: "南师", fullName: "南京师范大学", city: "南京", tags: ["211", "南京", "方向偏差"], difficulty: 66 },
   { id: "nuist", shortName: "南信大", fullName: "南京信息工程大学", city: "南京", tags: ["双一流", "信息特色", "热度上升"], difficulty: 66 },
   { id: "szu", shortName: "深大", fullName: "深圳大学", city: "深圳", tags: ["双非", "深圳", "热度高"], difficulty: 66 },
-  { id: "ccnu", shortName: "华师", fullName: "华中师范大学", city: "武汉", tags: ["211", "师范", "方向需核实"], difficulty: 65, logoNames: ["华师", "华中师范大学"] },
+  { id: "ccnu", shortName: "华中师范", fullName: "华中师范大学", city: "武汉", tags: ["211", "师范", "方向需核实"], difficulty: 65, logoNames: ["华师", "华中师范大学"] },
   { id: "xju", shortName: "新大", fullName: "新疆大学", city: "乌鲁木齐", tags: ["211", "地域友好", "调剂关注"], difficulty: 63 },
-  { id: "gxun", shortName: "广西大", fullName: "广西大学", city: "南宁", tags: ["211", "地域缓冲", "性价比"], difficulty: 62 },
+  { id: "gxun", shortName: "广西大学", fullName: "广西大学", city: "南宁", tags: ["211", "地域缓冲", "性价比"], difficulty: 62 },
   { id: "lzu", shortName: "兰大", fullName: "兰州大学", city: "兰州", tags: ["985", "地域缓冲", "名校"], difficulty: 62 },
   { id: "ynu", shortName: "云大", fullName: "云南大学", city: "昆明", tags: ["211", "地域友好", "专业差异"], difficulty: 61 },
   { id: "gzun", shortName: "贵大", fullName: "贵州大学", city: "贵阳", tags: ["211", "地域友好", "性价比"], difficulty: 60 },
   { id: "jiangnan", shortName: "江南", fullName: "江南大学", city: "无锡", tags: ["211", "城市较好", "方向差异"], difficulty: 60 },
   { id: "qhu", shortName: "青大", fullName: "青海大学", city: "西宁", tags: ["211", "地域友好", "稳妥"], difficulty: 58 },
-  { id: "ncut", shortName: "北方工大", fullName: "北方工业大学", city: "北京", tags: ["双非", "北京", "普通难度"], difficulty: 57, logoNames: ["北方工业大学"] },
-  { id: "nefu", shortName: "东北林大", fullName: "东北林业大学", city: "哈尔滨", tags: ["211", "林业特色", "方向差异"], difficulty: 56 },
-  { id: "sdut", shortName: "山理工", fullName: "山东理工大学", city: "淄博", tags: ["双非", "省属", "稳妥"], difficulty: 55 },
+  { id: "ncut", shortName: "北方工业", fullName: "北方工业大学", city: "北京", tags: ["双非", "北京", "普通难度"], difficulty: 57, logoNames: ["北方工业大学"] },
+  { id: "nefu", shortName: "东林", fullName: "东北林业大学", city: "哈尔滨", tags: ["211", "林业特色", "方向差异"], difficulty: 56 },
+  { id: "sdut", shortName: "山东理工", fullName: "山东理工大学", city: "淄博", tags: ["双非", "省属", "稳妥"], difficulty: 55 },
   { id: "qdut", shortName: "青理工", fullName: "青岛理工大学", city: "青岛", tags: ["双非", "城市较好", "稳妥"], difficulty: 54 },
   { id: "hfuu", shortName: "合工大?", fullName: "合肥工业大学", city: "合肥", tags: ["重复保护"], difficulty: 54, hiddenDuplicate: true },
-  { id: "gxu", shortName: "广西", fullName: "广西大学", city: "南宁", tags: ["重复保护"], difficulty: 54, hiddenDuplicate: true },
-  { id: "tjpu", shortName: "天工大", fullName: "天津工业大学", city: "天津", tags: ["双一流", "工科", "相对友好"], difficulty: 53 },
-  { id: "nbu", shortName: "宁大", fullName: "宁波大学", city: "宁波", tags: ["双一流", "城市较好", "性价比"], difficulty: 52 },
-  { id: "xust", shortName: "西安科大", fullName: "西安科技大学", city: "西安", tags: ["双非", "稳妥", "方向差异"], difficulty: 51 },
-  { id: "wust", shortName: "武科大", fullName: "武汉科技大学", city: "武汉", tags: ["双非", "工科", "稳妥"], difficulty: 50 },
+  { id: "gxu", shortName: "广西大学", fullName: "广西大学", city: "南宁", tags: ["重复保护"], difficulty: 54, hiddenDuplicate: true },
+  { id: "tjpu", shortName: "天工", fullName: "天津工业大学", city: "天津", tags: ["双一流", "工科", "相对友好"], difficulty: 53 },
+  { id: "nbu", shortName: "宁波大学", fullName: "宁波大学", city: "宁波", tags: ["双一流", "城市较好", "性价比"], difficulty: 52 },
+  { id: "xust", shortName: "西科", fullName: "西安科技大学", city: "西安", tags: ["双非", "稳妥", "方向差异"], difficulty: 51 },
+  { id: "wust", shortName: "武汉科技", fullName: "武汉科技大学", city: "武汉", tags: ["双非", "工科", "稳妥"], difficulty: 50 },
   { id: "cuit", shortName: "成信大", fullName: "成都信息工程大学", city: "成都", tags: ["双非", "信息特色", "稳妥"], difficulty: 49 },
   { id: "dlmu", shortName: "大连海事", fullName: "大连海事大学", city: "大连", tags: ["211", "行业特色", "方向差异"], difficulty: 49 },
   { id: "shisu", shortName: "上外?", fullName: "上海大学", city: "上海", tags: ["重复保护"], difficulty: 48, hiddenDuplicate: true },
@@ -103,7 +103,7 @@ const schools = [
   { id: "xupt", shortName: "西邮", fullName: "西安邮电大学", city: "西安", tags: ["双非", "通信信息", "稳妥"], difficulty: 45, logoNames: ["西邮", "西安邮电大学"] },
 ].filter((school) => !school.hiddenDuplicate);
 
-const STORAGE_KEY = "control-auto-school-logo-ranking-v9-logo-glow-fill";
+const STORAGE_KEY = "control-auto-school-logo-ranking-v12-instant-drag";
 const LEGACY_KEYS = [];
 const EDGE_PADDING = 12;
 const LOGO_DIRS = ["assets/logos/", "logos/", "./"];
@@ -136,12 +136,16 @@ let dragStartPosition = null;
 let poolPlaceholder = null;
 let saveTimer = null;
 let resizeTimer = null;
+let dragAnimationFrame = null;
+let dragCardSize = { width: 0, height: 0 };
+let dragLastClient = { x: 0, y: 0 };
 
 function initApp() {
   document.documentElement.style.setProperty("--level-count", String(levels.length));
   currentState = loadState();
   renderAxis();
   applySurfaceGradient();
+  updateUnifiedCardSize();
   renderCards();
   resetBtn.addEventListener("click", resetRanking);
   arrangeBtn.addEventListener("click", () => autoArrangeAll());
@@ -240,7 +244,7 @@ function serializeStateForStorage() {
     placed: Object.fromEntries(
       Object.entries(currentState.placed).map(([schoolId, position]) => [
         schoolId,
-        { x: round1(position.x), y: round1(position.y) },
+        { x: round2(position.x), y: round2(position.y) },
       ])
     ),
   };
@@ -281,6 +285,7 @@ function applySurfaceGradient() {
 }
 
 function renderCards() {
+  updateUnifiedCardSize();
   poolList.innerHTML = "";
   rankSurface.querySelectorAll(".school-card").forEach((card) => card.remove());
 
@@ -360,7 +365,8 @@ function handlePointerDown(event) {
   if (event.button !== 0) return;
   if (draggedCard) return;
 
-  // 关键修复：阻止图片、文字、链接等子元素触发浏览器默认拖拽/选中行为。
+  // 参考原站拖拽：保持鼠标按下点在卡片内部的原始偏移，不做中心吸附、不做缩放。
+  // 这样鼠标点住 Logo 哪里，拖动过程中那个点就一直跟着鼠标走。
   event.preventDefault();
   event.stopPropagation();
 
@@ -374,38 +380,64 @@ function handlePointerDown(event) {
     x: event.clientX - cardRect.left,
     y: event.clientY - cardRect.top,
   };
+  dragCardSize = { width: cardRect.width, height: cardRect.height };
+  dragLastClient = { x: event.clientX, y: event.clientY };
 
   ensurePoolPlaceholder();
   if (dragOrigin === "pool") {
     poolList.insertBefore(poolPlaceholder, draggedCard.nextSibling);
   }
 
+  document.body.classList.add("dragging-active");
   draggedCard.classList.add("is-dragging");
   draggedCard.style.width = `${cardRect.width}px`;
+  draggedCard.style.height = `${cardRect.height}px`;
   draggedCard.style.position = "fixed";
-  draggedCard.style.left = `${cardRect.left}px`;
-  draggedCard.style.top = `${cardRect.top}px`;
+  draggedCard.style.left = "0px";
+  draggedCard.style.top = "0px";
   draggedCard.style.margin = "0";
+  draggedCard.style.transition = "none";
+  draggedCard.style.willChange = "transform";
+  draggedCard.style.transform = `translate3d(${cardRect.left}px, ${cardRect.top}px, 0)`;
   document.body.appendChild(draggedCard);
+  positionDraggedCard(event.clientX, event.clientY);
 
-  document.addEventListener("pointermove", handlePointerMove);
-  document.addEventListener("pointerup", handlePointerUp, { once: true });
-  document.addEventListener("pointercancel", handlePointerCancel, { once: true });
+  document.addEventListener("pointermove", handlePointerMove, { passive: false });
+  if ("onpointerrawupdate" in window) {
+    document.addEventListener("pointerrawupdate", handlePointerMove, { passive: false });
+  }
+  document.addEventListener("pointerup", handlePointerUp, { once: true, passive: false });
+  document.addEventListener("pointercancel", handlePointerCancel, { once: true, passive: false });
 }
 
 function handlePointerMove(event) {
   if (!draggedCard) return;
   event.preventDefault();
-  positionDraggedCard(event.clientX, event.clientY);
 
-  const overSurface = isPointInside(rankSurface, event.clientX, event.clientY);
-  const overPool = isPointInside(poolZone, event.clientX, event.clientY);
+  // 使用浏览器合并事件中的最后一个坐标，视觉移动立即执行；
+  // 较重的命中检测/占位更新放到下一帧，避免拖动卡片被 DOM 计算拖慢。
+  const latest = event.getCoalescedEvents?.().at?.(-1) || event;
+  dragLastClient = { x: latest.clientX, y: latest.clientY };
+  positionDraggedCard(dragLastClient.x, dragLastClient.y);
+
+  if (!dragAnimationFrame) {
+    dragAnimationFrame = requestAnimationFrame(() => {
+      dragAnimationFrame = null;
+      updateDragTargets(dragLastClient.x, dragLastClient.y);
+    });
+  }
+}
+
+function updateDragTargets(clientX, clientY) {
+  if (!draggedCard) return;
+  const overSurface = isPointInside(rankSurface, clientX, clientY);
+  const overPool = isPointInside(poolZone, clientX, clientY);
   rankSurface.classList.toggle("is-active-drop", overSurface);
   poolZone.classList.toggle("is-active-drop", overPool);
   poolList.classList.toggle("is-active-drop", overPool);
 
   if (overPool) {
-    updatePoolPlaceholder(event.clientX, event.clientY);
+    updatePoolPlaceholder(clientX, clientY);
   } else if (dragOrigin !== "pool") {
     removePoolPlaceholder();
   }
@@ -439,8 +471,16 @@ function handlePointerCancel() {
 }
 
 function positionDraggedCard(clientX, clientY) {
-  draggedCard.style.left = `${clientX - dragPointerOffset.x}px`;
-  draggedCard.style.top = `${clientY - dragPointerOffset.y}px`;
+  if (!draggedCard) return;
+  // 固定鼠标按下点：鼠标点住卡片哪里，那个点就始终贴住鼠标。
+  // 使用 translate3d 只走合成层，不触发布局重排，拖动响应更接近瞬时。
+  const left = clientX - dragPointerOffset.x;
+  const top = clientY - dragPointerOffset.y;
+  draggedCard.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+}
+
+function applyPendingDragTransform() {
+  // 兼容旧变量；当前版本视觉移动已在 pointer 事件中直接完成。
 }
 
 function dropDraggedCardIntoBoard(position) {
@@ -473,12 +513,20 @@ function revertDraggedCard() {
 }
 
 function endDrag() {
+  if (dragAnimationFrame) {
+    cancelAnimationFrame(dragAnimationFrame);
+    dragAnimationFrame = null;
+  }
+  dragCardSize = { width: 0, height: 0 };
+  dragLastClient = { x: 0, y: 0 };
   draggedCard?.classList.remove("is-dragging");
+  document.body.classList.remove("dragging-active");
   rankSurface.classList.remove("is-active-drop");
   poolZone.classList.remove("is-active-drop");
   poolList.classList.remove("is-active-drop");
   removePoolPlaceholder();
   document.removeEventListener("pointermove", handlePointerMove);
+  document.removeEventListener("pointerrawupdate", handlePointerMove);
   document.removeEventListener("pointerup", handlePointerUp);
   document.removeEventListener("pointercancel", handlePointerCancel);
   draggedCard = null;
@@ -489,9 +537,13 @@ function endDrag() {
 function clearDragCardStyles(card) {
   card.style.position = "";
   card.style.width = "";
+  card.style.height = "";
   card.style.margin = "";
   card.style.left = "";
   card.style.top = "";
+  card.style.transform = "";
+  card.style.transition = "";
+  card.style.willChange = "";
 }
 
 function isPointInside(element, x, y) {
@@ -531,14 +583,15 @@ function getPoolInsertBeforeCard(pointerX, pointerY) {
 
 function getBoardPositionFromPointer(pointerX, pointerY) {
   const surfaceRect = rankSurface.getBoundingClientRect();
-  const cardRect = draggedCard.getBoundingClientRect();
-  const maxLeft = Math.max(EDGE_PADDING, surfaceRect.width - cardRect.width - EDGE_PADDING);
-  const maxTop = Math.max(EDGE_PADDING, surfaceRect.height - cardRect.height - EDGE_PADDING);
+  const width = dragCardSize.width || draggedCard.offsetWidth || draggedCard.getBoundingClientRect().width;
+  const height = dragCardSize.height || draggedCard.offsetHeight || draggedCard.getBoundingClientRect().height;
+  const maxLeft = Math.max(EDGE_PADDING, surfaceRect.width - width - EDGE_PADDING);
+  const maxTop = Math.max(EDGE_PADDING, surfaceRect.height - height - EDGE_PADDING);
   const left = clamp(pointerX - surfaceRect.left - dragPointerOffset.x, EDGE_PADDING, maxLeft);
   const top = clamp(pointerY - surfaceRect.top - dragPointerOffset.y, EDGE_PADDING, maxTop);
   return {
-    x: round1((left / maxLeft) * 100),
-    y: round1((top / maxTop) * 100),
+    x: round2((left / maxLeft) * 100),
+    y: round2((top / maxTop) * 100),
   };
 }
 
@@ -582,18 +635,45 @@ function resetRanking() {
 }
 
 function getCardMetrics() {
-  const sample = rankSurface.querySelector(".school-card") || poolList.querySelector(".school-card");
+  // 自动整理时必须按“排名区卡片尺寸”计算，而不是按待评价区卡片尺寸计算。
+  // 这样才能保证每个档位栏位横向约放下 3.5 个院校 Logo。
+  const sample = rankSurface.querySelector(".school-card");
   if (sample) {
     const rect = sample.getBoundingClientRect();
     return {
-      cardWidth: Math.max(88, rect.width),
-      cardHeight: Math.max(104, rect.height),
+      cardWidth: Math.max(46, rect.width),
+      cardHeight: Math.max(62, rect.height),
     };
   }
+
+  const probe = document.createElement("article");
+  probe.className = "school-card metric-probe";
+  probe.style.visibility = "hidden";
+  probe.style.pointerEvents = "none";
+  probe.style.left = "0";
+  probe.style.top = "0";
+  probe.innerHTML = '<div class="logo-box"><span class="logo-fallback" style="display:flex">测</span></div><div class="school-short">测校</div>';
+  rankSurface.appendChild(probe);
+  const rect = probe.getBoundingClientRect();
+  probe.remove();
+
   return {
-    cardWidth: 150,
-    cardHeight: 178,
+    cardWidth: Math.max(46, rect.width || 64),
+    cardHeight: Math.max(62, rect.height || 88),
   };
+}
+
+
+function updateUnifiedCardSize() {
+  const surfaceWidth = rankSurface?.getBoundingClientRect().width || window.innerWidth;
+  // 6栏 × 3.5个Logo = 21个Logo宽度；预留少量间隙后取统一卡片尺寸。
+  const target = Math.floor(surfaceWidth / 22.4);
+  const minSize = window.innerWidth < 780 ? 46 : 54;
+  const maxSize = window.innerWidth < 780 ? 78 : 90;
+  const size = clamp(target, minSize, maxSize);
+  document.documentElement.style.setProperty("--card-size", `${size}px`);
+  document.documentElement.style.setProperty("--board-card-size", `${size}px`);
+  return size;
 }
 
 function getDefaultSurfaceHeight() {
@@ -612,7 +692,9 @@ function autoArrangeAll() {
   const { cardWidth, cardHeight } = getCardMetrics();
   const cardGap = Math.max(10, Math.round(cardWidth * 0.08));
   const tierWidth = Math.max(cardWidth + EDGE_PADDING * 2, surfaceRect.width / levels.length);
-  const columnsPerTier = Math.max(1, Math.floor((tierWidth - EDGE_PADDING * 2 + cardGap) / (cardWidth + cardGap)));
+  // 每一栏按“约 3.5 个 Logo”缩小卡片尺寸；自动整理仍按可完整放下的数量排布。
+  // 视觉上相当于单栏可容纳 3 个完整 Logo，并留出半个 Logo 的缓冲空间。
+  const columnsPerTier = Math.max(3, Math.floor((tierWidth - EDGE_PADDING * 2 + cardGap) / (cardWidth + cardGap)));
   const rowsByTier = new Map(levels.map((level) => [level.id, 0]));
   const countByTier = new Map(levels.map((level) => [level.id, 0]));
 
@@ -760,12 +842,17 @@ function handleResize() {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
     updateRankSurfaceHeightForCurrentLayout();
+    updateUnifiedCardSize();
     requestAnimationFrame(repositionPlacedCards);
-  }, 80);
+  }, 60);
 }
 
 function round1(value) {
   return Math.round(value * 10) / 10;
+}
+
+function round2(value) {
+  return Math.round(value * 100) / 100;
 }
 
 function unique(list) {
@@ -791,6 +878,7 @@ function hexToRgba(hex, alpha) {
 
 document.addEventListener("fullscreenchange", () => {
   fullscreenBtn.textContent = document.fullscreenElement ? "退出全屏" : "全屏展示";
+  updateUnifiedCardSize();
   requestAnimationFrame(repositionPlacedCards);
 });
 
